@@ -8,6 +8,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  isLoading = false;
 
   constructor(public authService: AuthService) { }
 
@@ -18,7 +19,7 @@ export class SignupComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    console.log(form);
+    this.isLoading = true;
     this.authService.createUser(form.value.email, form.value.password);
   }
 
